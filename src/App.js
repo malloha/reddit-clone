@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import CreatePost from './components/createPost'
+import 'font-awesome/css/font-awesome.min.css';
 
 class App extends Component {
   constructor(props) {
@@ -35,7 +36,8 @@ class App extends Component {
     const newPost = {
       author: this.state.author,
       content: this.state.content,
-      title: this.state.title
+      title: this.state.title,
+      voteCount: this.state.voteCount
     }
     posts.push(newPost)
 
@@ -62,8 +64,11 @@ class App extends Component {
         console.error("Something terrible occured in vote function")
     }
 
+    posts.push(sentPost);
+    posts.sort((a, b) => b.voteCount - a.voteCount);
+
     this.setState({
-      posts: [...posts, sentPost]
+      posts: posts
     })
   }
 
@@ -84,8 +89,17 @@ class App extends Component {
             <h4> {post.title}</h4>
             <p> {post.content}</p>
             <p>{post.voteCount}</p>
+
+            <i className="fa fa-angle-double-up"
+              onClick={(e) => this.vote(e, post, "plus")}
+            ></i>
+            <i className="fa fa-angle-double-down"
+              onClick={(e) => this.vote(e, post, "minus")}
+            ></i>
+
+            {/* 
             <button onClick={(e) => this.vote(e, post, "plus")}>Vote Up! </button>
-            <button onClick={(e) => this.vote(e, post, "minus")}>Vote Down! </button>
+            <button onClick={(e) => this.vote(e, post, "minus")}>Vote Down! </button> */}
           </div>
         )
         }
