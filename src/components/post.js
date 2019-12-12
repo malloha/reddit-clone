@@ -12,17 +12,13 @@ class Post extends Component {
       content: "",
       author: "maleeha",
       voteCount: 0,
-      posts: [
-        {
-          title: "this is a post",
-          content: "this is the content",
-          author: "Hasan, Maleeha",
-          voteCount: 0
-        }
-      ]
-
+      posts: [{
+        title: "this is a post",
+        content: "this is the content",
+        author: "Hasan, Maleeha",
+        voteCount: 0
+      }]
     }
-
   }
 
   onContentChange = (e) => {
@@ -66,10 +62,8 @@ class Post extends Component {
       default:
         console.error("Something terrible occured in vote function")
     }
-
     posts.push(sentPost);
     posts.sort((a, b) => b.voteCount - a.voteCount);
-
     this.setState({
       posts: posts
     })
