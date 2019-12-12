@@ -12,11 +12,13 @@ class Post extends Component {
       content: "",
       author: "maleeha",
       voteCount: 0,
+      comments: [],
       posts: [{
         title: "this is a post",
         content: "this is the content",
         author: "Hasan, Maleeha",
-        voteCount: 0
+        voteCount: 0,
+        comments: ["comment 1", "comment 2"]
       }]
     }
   }

@@ -1,4 +1,5 @@
 import React from 'react'
+import Comment from './comments'
 
 const PostList = (props) => {
   return (
@@ -15,10 +16,8 @@ const PostList = (props) => {
         <i className="fa fa-angle-double-down"
           onClick={(e) => props.vote(e, post, "minus")}
         ></i>
+        {post.comments.length > 0 && <Comment comments={post.comments} />}
 
-        {/* 
-        <button onClick={(e) => this.vote(e, post, "plus")}>Vote Up! </button>
-        <button onClick={(e) => this.vote(e, post, "minus")}>Vote Down! </button> */}
       </div>
     )
 
